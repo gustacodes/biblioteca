@@ -4,6 +4,8 @@ import com.biblioteca.umj.dto.AlunosDTO;
 import com.biblioteca.umj.entities.Alunos;
 import com.biblioteca.umj.services.AlunoServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +19,29 @@ public class AlunoController {
     AlunoServices alunoServices;
 
     @PostMapping("/cadastro")
-    public Alunos save(@RequestBody Alunos aluno) {
-        return alunoServices.save(aluno);
+    public ResponseEntity<Alunos> save(@RequestBody Alunos aluno) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(alunoServices.save(aluno));
     }
 
     @GetMapping
-    public List<Alunos> findAll() {
-        return alunoServices.findAll();
+    public ResponseEntity<List<Alunos>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(alunoServices.findAll());
     }
 
     @GetMapping("/{id}")
-    public AlunosDTO findById(@PathVariable Long id) {
-        return alunoServices.findById(id);
+    public ResponseEntity<AlunosDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(alunoServices.findById(id));
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteAluno(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteAluno(@PathVariable Long id) {
         alunoServices.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping("/consulta/{cpf}")
-    public Alunos findByCpf(@PathVariable String cpf) {
-        return alunoServices.findByCpf(cpf);
+    public ResponseEntity<Alunos> findByCpf(@PathVariable String cpf) {
+        return ResponseEntity.status(HttpStatus.OK).body(alunoServices.findByCpf(cpf));
     }
 
 }
