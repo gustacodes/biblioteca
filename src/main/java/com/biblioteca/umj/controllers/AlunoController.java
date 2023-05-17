@@ -31,4 +31,9 @@ public class AlunoController {
         return alunoServices.findById(id);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteAluno(@PathVariable Long id) {
+        alunoServices.deleteById(id);
+    }
+
 }
