@@ -1,5 +1,6 @@
 package com.biblioteca.umj.dto;
 
+import com.biblioteca.umj.entities.Alunos;
 import com.biblioteca.umj.entities.Livros;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class LivrosDTO {
     private String nome;
     private String autor;
     private Integer quantidade;
+    private Alunos aluno;
 
     public LivrosDTO(Livros livro) {
         id = livro.getId();
