@@ -29,6 +29,10 @@ public class AlunoServices {
         return alunoDTO;
     }
 
+    public Alunos findByCpf(String cpf) {
+        return alunoRepository.findByCpf(cpf);
+    }
+
     public void deleteById(Long id) {
         alunoRepository.deleteById(id);
     }

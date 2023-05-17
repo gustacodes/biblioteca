@@ -36,4 +36,9 @@ public class AlunoController {
         alunoServices.deleteById(id);
     }
 
+    @GetMapping("/consulta/{cpf}")
+    public Alunos findByCpf(@PathVariable String cpf) {
+        return alunoServices.findByCpf(cpf);
+    }
+
 }
