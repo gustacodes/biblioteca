@@ -25,4 +25,8 @@ public class LivroServices {
     public Livros findByNome(String nome) {
         return livroRepository.findByNome(nome);
     }
+
+    public void deleteById(Long id) {
+        livroRepository.deleteById(id);
+    }
 }
